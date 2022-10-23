@@ -1,6 +1,6 @@
 # Limit Order Books Simulation Framework
 
-Orders in CLOB have a dynamic distribution that depends on critical price level, market conditions and current price trend [1],[2].
+Orders in CLOB have a dynamic distribution that depends on critical price level, market conditions and current price trend [1], [2].
 
 This repository implements a simple framework for generating, simulating order fills and visualizing a CLOB.
 
