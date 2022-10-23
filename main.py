@@ -51,10 +51,10 @@ class OrderBookManager:
         return min_price, max_price
 
 
-    def initalize_distributios(self, price):
+    def initalize_distributions(self, price):
 
         min_price, max_price = self.get_order_ranges(price)
-        clusters = np.random.uniform(min_price, max_price, self.clustersAmount)
+        clusters = np.random.uniform(min_price*1.05, max_price*0.95, self.clustersAmount)
         self.initialized = True
         self.clusters = clusters
 
@@ -65,7 +65,7 @@ class OrderBookManager:
         assert averageOrderSize < maxLiquidity
 
         if not self.initialized:
-            self.initalize_distributios(price)
+            self.initalize_distributions(price)
 
         if orderBook.empty:
             currentLiquidity = 0
@@ -127,7 +127,8 @@ class OrderBookManager:
         ax.set_frame_on(False)  # remove all spines
 
         plt.plot(prices, 'red')
-
+        ax.set_ylabel('Price')
+        ax.set_xlabel('Time')
         plt.show()
 
 
@@ -140,7 +141,7 @@ if __name__ == '__main__':
     liquidity_growth = 150
 
     price_i = 20
-    daily_vol = 0.01
+    daily_vol = 0.015
     price = price_i
 
 
@@ -166,7 +167,7 @@ if __name__ == '__main__':
 
         # reset book clusters, test
         if i == 10:
-            OB.initalize_distributios(price_i)
+            OB.initalize_distributions(price_i)
             initial_liquidity = initial_liquidity*1.1
 
     OB.plot_book(books, prices)
