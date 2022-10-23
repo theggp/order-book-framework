@@ -1,18 +1,18 @@
 # Limit Order Books Simulation Framework
 
-Orders in CLOB have a dynamic distribution that depends on critical level, current market conditions and current price trend [1],[2].
+Orders in CLOB have a dynamic distribution that depends on critical price level, market conditions and current price trend [1],[2].
 
-This repo implements a simple framework for generating, visualizing and simulating order fills of a CLOB.
+This repository implements a simple framework for generating, simulating order fills and visualizing a CLOB.
 
 ![Sim2](https://user-images.githubusercontent.com/11960630/197416126-1771c42b-4782-4f7a-8606-7c711d3f558b.png)
 
 ## Features
 
 - The Order Book is implemented by sampling from two distributions:
-  - Uniform distributions, representing liquidity which target the whole price range
+  - Uniform distributions, representing liquidity targeting the whole price range.
   - Clustered distributions, representing liquidity concentrated at critical levels. An improvement is estimating realistic position of these clusters through real historical data.
 
-  Implementing additional distributions (or adding complexity to the current ones) is straightforward as long as there is a mathematical model to follow.
+  Implementing additional distributions (or adding complexity to the current ones) is pretty straightforward.
 
 - Order fills are simulated assuming that the price timeseries is an oracle not impacted by the CLOB.
 
